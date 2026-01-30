@@ -1,0 +1,36 @@
+Fibonacci Number in 4 ways 
+1. Memoraization
+def fibo(n,dp):
+    if(n==0):
+        return 0
+    if(n==1):
+        return 1
+    if(dp[n]==-1):
+        dp[n]=fibo(n-1,dp)+fibo(n-2,dp)
+    return dp[n]
+n=int(input())
+dp=[-1]*(n+1)
+print(fibo(n,dp))
+
+2. Tabulation
+def fibo(n,dp):
+    dp[0]=0
+    dp[1]=1
+    for ind in range(2,n+1):
+        dp[ind]=dp[ind-1]+dp[ind-2]
+    return dp[n]
+n=int(input())
+dp=[-1]*(n+1)
+print(fibo(n,dp))
+
+3. Space Optimaization
+def fibo(n):
+    prev2=0
+    prev=1
+    for i in range(2,n+1): #T.C :-O(N)
+        curr=prev+prev2    #S.C :-O(1)
+        prev2=prev
+        prev=curr
+    return prev
+n=int(input())
+print(fibo(n))
